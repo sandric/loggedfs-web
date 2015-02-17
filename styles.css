@@ -1,0 +1,8 @@
+.item {
+  margin: 10px;
+}
+
+.item > * {
+  display: inline;
+  padding-left: 10px;
+}
