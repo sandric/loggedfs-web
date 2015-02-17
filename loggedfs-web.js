@@ -20,19 +20,21 @@ loggedfsClient.prototype.parseOutput = function(outputString) {
 
   var parsedOutput;
   if (match == null)
-    parsedOutput = outputString;
+    parsedOutput = {
+      rawString: outputString
+    };
   else
     parsedOutput = {
-    time: match[1],
-    action: match[2],
-    attempt: match[3],
-    result: match[4] === 'SUCCESS' ? true:false,
-    pid: +match[5],
-    pname: match[6],
-    uid: +match[7]
-  };
+      time: match[1],
+      action: match[2],
+      attempt: match[3],
+      result: match[4] === 'SUCCESS' ? true:false,
+      pid: +match[5],
+      pname: match[6],
+      uid: +match[7]
+    };
 
-  return JSON.stringify(parsedOutput);
+  return parsedOutput;
 };
 
 module.exports = loggedfsClient;
