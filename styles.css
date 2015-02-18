@@ -15,6 +15,10 @@
   background-color: #f9a4a4;
 }
 
+.item_raw {
+  background-color: #baddda;
+}
+
 .attempt {
   font-weight: bold;
 }
