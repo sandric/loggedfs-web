@@ -1,5 +1,7 @@
+var config = require('./config.json');
+
 var loggedfsClient = function(){
-  this.terminal = require('child_process').spawn('loggedfs', ['-f', '-p', '/home', '-c', '/home/sandric/loggedfs.xml']);
+  this.terminal = require('child_process').spawn('loggedfs', ['-f', '-p', config.mount_directory, '-c', config.loggedfs_config]);
 };
 
 loggedfsClient.prototype.start = function(onDataCallback, onEndCallback) {
