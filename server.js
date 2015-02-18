@@ -16,9 +16,22 @@ fs.readFile('./styles.css', function (err, css) {
     res.write("<style>" + css  + "</style>");
 
     eLoggedfsClient.start(function(data){
-      var resultingString = "<div class = 'item'>";
-      for(var el in data)
-        resultingString += "<div class = '" + el + "'>" + data[el] + "</div>";
+      var resultingString;
+
+      if(data.rawString) {
+        resultingString = "<div class = 'item_raw'>" + data.rawString + "</div>";
+      } else {
+        resultingString = "<div class = 'item" + (data.result ? "":"_red")  + "'>";
+        
+        resultingString += "<div class = 'time'>" + data.time + "</div>";
+        resultingString += "<div class = 'action'>" + data.action + "</div>";
+        resultingString += "<div class = 'attempt'>" + data.attempt + "</div>";
+        resultingString += "<div class = 'pid'>" + data.pid + "</div>";
+        resultingString += "<div class = 'pname'>" + data.pname + "</div>";
+        resultingString += "<div class = 'uid'>" + data.uid + "</div>";
+
+        resultingString += "</div>";
+      }
       resultingString += "</div>";
       res.write(resultingString);
     }, function(code){

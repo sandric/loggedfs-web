@@ -1,8 +1,20 @@
-.item {
+.item, .item_red, .item_raw {
   margin: 10px;
+  margin-left: 30px;
+  padding: 5px;
+
+  font-family: monospace;
 }
 
-.item > * {
+.item > *, .item_red > * {
   display: inline;
-  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.item_red {
+  background-color: #f9a4a4;
+}
+
+.attempt {
+  font-weight: bold;
 }
