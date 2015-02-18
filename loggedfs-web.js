@@ -15,14 +15,17 @@ loggedfsClient.prototype.start = function(onDataCallback, onEndCallback) {
 };
 
 loggedfsClient.prototype.parseOutput = function(outputString) {
+  if(!outputString) return null;
+
   var re = /(.*) \(src\/loggedfs\.cpp:\d*\) (.*?) (\/.*) \{(.*)\} \[ pid += (\d*) (.*) uid = (\d*) +\]/; 
   var match = re.exec(outputString);
 
   var parsedOutput;
-  if (match == null)
+  if (match == null) {
     parsedOutput = {
       rawString: outputString
     };
+  }
   else
     parsedOutput = {
       time: match[1],

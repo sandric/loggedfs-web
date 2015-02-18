@@ -16,6 +16,8 @@ fs.readFile('./styles.css', function (err, css) {
     res.write("<style>" + css  + "</style>");
 
     eLoggedfsClient.start(function(data){
+      if(!data) return;
+
       var resultingString;
 
       if(data.rawString) {
