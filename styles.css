@@ -18,3 +18,19 @@
 .attempt {
   font-weight: bold;
 }
+
+.action_open {
+  color: #d9dba0;
+}
+
+.action_read {
+  color: green;
+}
+
+.action_write {
+  color: red;
+}
+
+.action_rename {
+  color: #7acff9;
+}

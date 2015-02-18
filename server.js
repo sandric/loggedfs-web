@@ -26,7 +26,14 @@ fs.readFile('./styles.css', function (err, css) {
         resultingString = "<div class = 'item" + (data.result ? "":"_red")  + "'>";
         
         resultingString += "<div class = 'time'>" + data.time + "</div>";
-        resultingString += "<div class = 'action'>" + data.action + "</div>";
+
+        var readWriteActionFlag = "";
+        if(/(read \d+ bytes from|\d+ bytes read from)/.exec(data.action)) 
+          readWriteActionFlag += "_read"
+        else if(/(write \d+ bytes to|\d+ bytes written to)/.exec(data.action))
+          readWriteActionFlag += "_write"; 
+
+        resultingString += "<div class = 'action" + (readWriteActionFlag || "_" + data.action) + "'>" + data.action + "</div>";
         resultingString += "<div class = 'attempt'>" + data.attempt + "</div>";
         resultingString += "<div class = 'pid'>" + data.pid + "</div>";
         resultingString += "<div class = 'pname'>" + data.pname + "</div>";
