@@ -35,6 +35,8 @@ fs.readFile('./styles.css', function (err, css) {
         resultingString += "</div>";
       }
       resultingString += "</div>";
+
+      resultingString += "<script>window.scrollTo(0,document.body.scrollHeight);</script>";
       res.write(resultingString);
     }, function(code){
     });
