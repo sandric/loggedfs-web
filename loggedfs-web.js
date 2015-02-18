@@ -39,6 +39,19 @@ loggedfsClient.prototype.parseOutput = function(outputString) {
       uid: +match[7]
     };
 
+  return this.filterExcludes(parsedOutput);
+};
+
+loggedfsClient.prototype.filterExcludes = function(parsedOutput) {
+  if(config.excludes)
+    for(var item in parsedOutput)
+      if(config.excludes[item])
+        for(var exclude in config.excludes[item]) {
+          var re = new RegExp(config.excludes[item][exclude]);
+          if(re.exec(parsedOutput[item]))
+            return null;
+        }
+
   return parsedOutput;
 };
 

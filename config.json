@@ -1,4 +1,9 @@
 {
   "mount_directory": "/home",
-  "loggedfs_config": "/home/sandric/loggedfs.xml"
+  "loggedfs_config": "/home/sandric/loggedfs.xml",
+  "excludes": {
+    "action": ["getattr"],
+    "attempt": [".*google-chrome-unstable.*", "/home/sandric/.xmonad/volume.sh"],
+    "pname": ["/usr/bin/fish", "amixer"]
+  }
 }
