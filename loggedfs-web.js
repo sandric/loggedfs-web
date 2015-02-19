@@ -1,7 +1,6 @@
-var config = require('./config.json');
-
 var loggedfsClient = function(){
-  this.terminal = require('child_process').spawn('loggedfs', ['-f', '-p', config.mount_directory, '-c', config.loggedfs_config]);
+  this.config = require('./config.json');
+  this.terminal = require('child_process').spawn('loggedfs', ['-f', '-p', this.config.mount_directory, '-c',this. config.loggedfs_config]);
 };
 
 loggedfsClient.prototype.start = function(onDataCallback, onEndCallback) {
@@ -43,11 +42,11 @@ loggedfsClient.prototype.parseOutput = function(outputString) {
 };
 
 loggedfsClient.prototype.filterExcludes = function(parsedOutput) {
-  if(config.excludes)
+  if(this.config.excludes)
     for(var item in parsedOutput)
-      if(config.excludes[item])
-        for(var exclude in config.excludes[item]) {
-          var re = new RegExp(config.excludes[item][exclude]);
+      if(this.config.excludes[item])
+        for(var exclude in this.config.excludes[item]) {
+          var re = new RegExp(this.config.excludes[item][exclude]);
           if(re.exec(parsedOutput[item]))
             return null;
         }

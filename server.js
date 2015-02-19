@@ -9,7 +9,10 @@ fs.readFile('./styles.css', function (err, css) {
 
   var eLoggedfsClient = new loggedfsClientFactory();
   
-  console.log('Server running at http://127.0.0.1:1337/');
+  var port = eLoggedfsClient.config.port||1337;
+  var host = eLoggedfsClient.config.host||'0.0.0.0';
+  
+  console.log('Server running at http://' + host + ':' + port);
 
   http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -47,5 +50,5 @@ fs.readFile('./styles.css', function (err, css) {
       res.write(resultingString);
     }, function(code){
     });
-  }).listen(1337, '0.0.0.0');
+  }).listen(port, host);
 });
