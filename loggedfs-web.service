@@ -1,0 +1,6 @@
+[Unit]
+Description=loggedfs web frontend
+
+[Service]
+WorkingDirectory=/home/sandric/loggedfs-web/
+ExecStart=/usr/bin/node server.js
