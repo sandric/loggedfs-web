@@ -45,6 +45,7 @@ Description=loggedfs web frontend
 [Service]
 WorkingDirectory=/home/sandric/loggedfs-web/
 ExecStart=/usr/bin/node server.js
+ExecStopPost=fusermount -zu /home
 ```
 As you may guess all you have to do is to change WorkingDirectory to path where you cloned repo, and (if needed), ExecStart to your node.js executable (substitute it with `which node` command output).
 Then copy it to your system systemd services directory: `cp loggedfs-web.service /etc/systemd/system/.`
